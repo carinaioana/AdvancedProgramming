@@ -7,9 +7,9 @@ public class Main {
         int res = (int) (Math.random() * 1_000_000);
         System.out.println(res);
         res = res * 3;
-        res = res+0b10101;
-        res = res+0xFF;
-        res *= 6;//multiply by 6
+        res = res+0b10101; //add binary to decimal
+        res = res+0xFF; //add hexa to decimal
+        res *= 6; //multiply by 6
         //sum of digits
         int sum = 0;
         while(res > 0) {
