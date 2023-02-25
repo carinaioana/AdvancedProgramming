@@ -26,6 +26,6 @@ public class Main {
             sum = suma1;
         }
         System.out.println( "Willy-nilly, this semester I will learn " + languages[sum]);
-        //everytime will print java
+        //prints java
     }
 }
