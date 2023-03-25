@@ -2,6 +2,15 @@ package Lab4.homework;
 
 public class Project implements Comparable<Project> {
     String projectName;
+    boolean isTaken = false;
+
+    public boolean isTaken() {
+        return isTaken;
+    }
+
+    public void setTaken(boolean taken) {
+        isTaken = taken;
+    }
 
     public Project(String projectName) {
         this.projectName = projectName;

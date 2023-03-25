@@ -1,11 +1,18 @@
 package Lab4.homework;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Student implements Comparable<Student> {
     String studentName;
+
+    public List<Project> getAdmissibleProjects() {
+        return admissibleProjects;
+    }
+
+    public void setAdmissibleProjects(List<Project> admissibleProjects) {
+        this.admissibleProjects = admissibleProjects;
+    }
 
     /**
      * a student can have a list of admissible projects
