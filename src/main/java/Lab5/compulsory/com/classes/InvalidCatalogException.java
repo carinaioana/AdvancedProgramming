@@ -14,7 +14,6 @@ public class InvalidCatalogException extends Exception {
     public InvalidCatalogException(String catalogPath){
         super("Invalid catalog found at " + catalogPath);
         this.catalogPath = catalogPath;
-
     }
     public String getCatalogPath(){
         return catalogPath;

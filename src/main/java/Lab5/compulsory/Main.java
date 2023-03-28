@@ -23,7 +23,6 @@ public class Main {
         catalog = CatalogUtil.load(path);
         catalog.findById("article1");
         System.out.println(catalog);
-
     }
 
 
