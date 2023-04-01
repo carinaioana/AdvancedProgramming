@@ -5,6 +5,9 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * opens a document using the native operating system application
+ */
 
 class ViewCommand extends CatalogCommand {
     private final String documentId;

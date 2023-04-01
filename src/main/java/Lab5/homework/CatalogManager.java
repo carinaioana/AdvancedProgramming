@@ -5,6 +5,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * main class of the application.
+ * It reads commands from the user, creates CatalogCommand objects from them, and executes the commands on the Catalog object.
+ * Each command implements the execute method, which takes a Catalog object as a parameter and performs the corresponding action.
+ * 1. add  id name and path
+ * 2. list
+ * 3. view
+ * 4. report
+ */
 public class CatalogManager {
     public static void main(String[] args) {
         Catalog catalog = new Catalog();

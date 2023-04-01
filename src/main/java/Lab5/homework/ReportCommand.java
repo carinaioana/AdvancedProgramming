@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * creates an HTML report of the catalog
+ */
 class ReportCommand extends CatalogCommand {
     private final String outputPath;
 
