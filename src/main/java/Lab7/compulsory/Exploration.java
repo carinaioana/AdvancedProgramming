@@ -27,9 +27,6 @@ public class Exploration {
         explore.addRobot(new Robot("R2D2"));
         explore.addRobot(new Robot("Optimus Prime"));
         explore.start();
-        System.out.println(explore.robots.get(1).getName());
-        System.out.println(explore.n);
-        System.out.println(explore.map);
     }
 
     @Override

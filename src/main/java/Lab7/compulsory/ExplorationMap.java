@@ -7,6 +7,7 @@ public class ExplorationMap {
     private final Cell[][] matrix;
     //Cell should be a wrapper or alias for List<Token>
     int n;
+    SharedMemory sharedMemory = new SharedMemory(n);
 
     public ExplorationMap(Cell[][] matrix, int n) {
         this.matrix = matrix;
@@ -17,21 +18,16 @@ public class ExplorationMap {
     public boolean visit(int row, int col, Robot robot) {
         synchronized (matrix[row][col]) {
             {
-                n = matrix.length;
                 Cell cell = matrix[row][col];
-                if(!cell.isVisited()){
-                    SharedMemory sharedMemory = new SharedMemory(n);
-                    List<Token> extractedTokens = sharedMemory.extractTokens(n); // Extract n tokens
-                    cell.setVisited(true); // Set the cell to visited after extracting tokens
-                    System.out.println(robot.getName() + " visited cell [" + row + "][" + col + "] and extracted " + extractedTokens.size() + " tokens.");
+                if (!cell.isVisited()) {
+                    List<Token> tokens = sharedMemory.extractTokens(n);
+                    //cell.addTokens(tokens);
+                    cell.setVisited(true);
+                    System.out.println(robot.getName() + " visited cell [" + row + "][" + col + "]");
                     return true;
+                } else {
+                    return false;
                 }
-            /*if the cell is not visited
-                the robot extract tokens
-                and store the tokens in the cell (it becomes visited)
-                display a success message
-            */
-                return false;
             }
         }
 // ...
