@@ -1,7 +1,13 @@
 package Lab8.homework.classes;
 
 import Lab8.homework.interfaces.ArtistsDAO;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +63,7 @@ public class ArtistsDAOImpl implements ArtistsDAO {
     }
 
     @Override
-    public int insert(Artists artists) throws SQLException {
+    public int insert(Artists artists) throws SQLException, IOException, CsvValidationException {
         Connection con = Database.getConnection();
 
         String sql = "INSERT INTO artists (id, name) VALUES (?, ?)";
@@ -110,4 +116,5 @@ public class ArtistsDAOImpl implements ArtistsDAO {
 
         return result;
     }
+
 }

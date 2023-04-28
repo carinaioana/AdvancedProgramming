@@ -10,6 +10,7 @@ import Lab8.homework.classes.*;
 import Lab8.homework.interfaces.AlbumsDAO;
 import Lab8.homework.interfaces.ArtistsDAO;
 import Lab8.homework.interfaces.GenresDAO;
+import com.opencsv.exceptions.CsvValidationException;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.SQLException;
@@ -19,7 +20,26 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws SQLException, FileNotFoundException {
-        String csvFilePath = "C:\\Users\\Carina\\Documents\\albumlist.csv";
+        try {
+            Connection conn = Database.getConnection();
+            // use the connection object to execute queries
+            CSVImporter csvImporter = new CSVImporter();
+            csvImporter.CSVImport("src/main/java/Lab8/homework/albumlist.csv");
+
+            List<Artists> artistsList;
+            ArtistsDAO artistsDAO = new ArtistsDAOImpl();
+            artistsList = artistsDAO.getAll();
+            for (Artists artist: artistsList) {
+                System.out.println(artist);
+            }
+            conn.close(); // return the connection to the pool
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (CsvValidationException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         //CREATE
         /*Albums album1 = new Albums(20, 1999, "Roses", "John", "rock");
