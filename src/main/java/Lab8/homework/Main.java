@@ -23,15 +23,38 @@ public class Main {
         try {
             Connection conn = Database.getConnection();
             // use the connection object to execute queries
+            //import from the real data set albumlist.csv
+
             CSVImporter csvImporter = new CSVImporter();
-            csvImporter.CSVImport("src/main/java/Lab8/homework/albumlist.csv");
+            csvImporter.ImportArtists("C:\\Users\\Carina\\Documents\\albumlist.csv");
+            csvImporter.ImportAlbums("C:\\Users\\Carina\\Documents\\albumlist.csv");
+            csvImporter.ImportGenres("C:\\Users\\Carina\\Documents\\albumlist.csv");
+
+            List<Albums> albumsList;
+            AlbumsDAO albumsDAO = new AlbumsDAOImpl();
 
             List<Artists> artistsList;
             ArtistsDAO artistsDAO = new ArtistsDAOImpl();
+
+            List<Genres> genresList;
+            GenresDAO genresDAO = new GenresDAOImpl();
+
+
+            albumsList = albumsDAO.getAll();
+            for (Albums album: albumsList) {
+                System.out.println(album);
+            }
+
             artistsList = artistsDAO.getAll();
             for (Artists artist: artistsList) {
                 System.out.println(artist);
             }
+
+            genresList = genresDAO.getAll();
+            for (Genres genre: genresList) {
+                System.out.println(genre);
+            }
+
             conn.close(); // return the connection to the pool
         } catch (SQLException e) {
             e.printStackTrace();

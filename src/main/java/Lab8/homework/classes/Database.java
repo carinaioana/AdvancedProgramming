@@ -9,6 +9,9 @@ public class Database {
     private static final String PASSWORD = "password";
     private static BasicDataSource dataSource = null;
 
+    /**
+     * connection pool-> Apache Commons DBCP
+     */
     static {
         dataSource = new BasicDataSource();
         dataSource.setUrl(URL);

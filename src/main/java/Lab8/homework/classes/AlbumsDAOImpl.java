@@ -37,7 +37,7 @@ public class AlbumsDAOImpl implements AlbumsDAO {
     public List<Albums> getAll() throws SQLException {
         Connection connection = Database.getConnection();
 
-        String sql = "SELECT id, release_year, title, artist, genre FROM albums;";
+        String sql = "SELECT id, release_year, title, artist, genres FROM albums;";
 
         List<Albums> albumList = new ArrayList<>();
         Statement statement = connection.createStatement();
@@ -49,7 +49,7 @@ public class AlbumsDAOImpl implements AlbumsDAO {
             Integer ReleaseYear = resultSet.getInt("release_year");
             String Title = resultSet.getString("title");
             String Artist = resultSet.getString("artist");
-            String Genre = resultSet.getString("genre");
+            String Genre = resultSet.getString("genres");
 
             Albums album = new Albums(oid, ReleaseYear, Title, Artist, Genre);
             albumList.add(album);
