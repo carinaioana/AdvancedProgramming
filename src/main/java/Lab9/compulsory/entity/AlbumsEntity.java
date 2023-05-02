@@ -9,8 +9,8 @@ import java.util.Objects;
                 query = "select e from AlbumsEntity e order by e.title"),
         @NamedQuery(name = "Album.findByArtist",
                 query = "select e from AlbumsEntity e where e.artist = ?1"),
-        @NamedQuery(name = "Albums.findByName",
-                query = "select a from AlbumsEntity a where a.title = ?1")
+        @NamedQuery(name = "Albums.findByTitle",
+                query = "select a from AlbumsEntity a where a.title = :title")
 })
 @Table(name = "albums", schema = "public", catalog = "postgres")
 public class AlbumsEntity {

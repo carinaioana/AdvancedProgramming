@@ -7,11 +7,16 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>Lab9.compulsory.entity.AlbumsEntity</class>
         <properties>
-            <property name="hibernate.show_sql" value="true"/>
+
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
             <property name="hibernate.connection.username" value="postgres"/>
             <property name="hibernate.connection.password" value="password"/>
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
         </properties>
     </persistence-unit>
 </persistence>
