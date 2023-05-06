@@ -7,11 +7,14 @@
         <setting name="provider-name" value="EclipseLink" />
         <datasource-mapping>
           <factory-entry name="Lab1" value="e40e64ae-dbdd-4731-a192-4cf0843f28db" />
-          <factory-entry name="default" value="e40e64ae-dbdd-4731-a192-4cf0843f28db" />
+          <factory-entry name="default" value="85a84703-61dc-426d-92b5-00b8712bbab7" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>
+    </facet>
+    <facet type="Spring" name="Spring">
+      <configuration />
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_18">
@@ -78,5 +81,20 @@
     <orderEntry type="library" name="Maven: org.jvnet.staxex:stax-ex:1.8" level="project" />
     <orderEntry type="library" name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.15" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.h2database:h2:2.1.214" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-settings:3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-utils:2.0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-jpa:3.0.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:3.0.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-orm:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-expression:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-tx:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-core:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.annotation:jakarta.annotation-api:2.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.2" level="project" />
   </component>
 </module>

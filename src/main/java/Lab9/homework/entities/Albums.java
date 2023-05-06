@@ -1,10 +1,31 @@
-package Lab8.compulsory;
+package Lab9.homework.entities;
 
-public class Albums {
+import javax.persistence.*;
+
+@Entity
+@NamedQueries({
+        @NamedQuery(name = "Album.findAll",
+                query = "select e from Albums e order by e.title"),
+        @NamedQuery(name = "Album.findByArtist",
+                query = "select e from Albums e where e.artist = ?1"),
+        @NamedQuery(name = "Albums.findByTitle",
+                query = "select a from Albums a where a.title = :title")
+})
+public class Albums{
+    @Id
+    @Column(name = "id")
     private Integer id;
+
+    @Column(name = "release_year")
     private Integer release_year;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "artist")
     private String artist;
+
+    @Column(name = "genres")
     private String genre;
 
     public Albums(Integer id, Integer release_year, String title, String artist, String genre) {
