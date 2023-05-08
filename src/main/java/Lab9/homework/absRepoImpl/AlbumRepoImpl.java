@@ -1,16 +1,12 @@
 
-package Lab9.homework;
-
-import Lab8.compulsory.Albums;
-import Lab9.compulsory.entity.AlbumsEntity;
+package Lab9.homework.absRepoImpl;
 import Lab9.homework.abstractRepository.AlbumsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import Lab9.homework.entities.Albums;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -24,20 +20,17 @@ import java.util.function.Function;
 
 @Service
 @Repository
-public class AlbumRepositoryImpl implements AlbumsRepository{
+public class AlbumRepoImpl implements AlbumsRepository{
 
     private  EntityManagerFactory managerFactory;
     private AlbumsRepository albumsRepository;
     private EntityManager entityManager;
 
-    public AlbumRepositoryImpl(AlbumsRepository albumsRepository, EntityManager entityManager) {
+    public AlbumRepoImpl() {
         this.managerFactory = Persistence.createEntityManagerFactory("default");
         this.entityManager = managerFactory.createEntityManager();
     }
 
-    public AlbumRepositoryImpl() {
-
-    }
 
     @Override
     public void flush() {

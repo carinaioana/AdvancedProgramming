@@ -1,6 +1,6 @@
-package Lab9.homework.abstractRepository;
+package homework.abstractRepository;
 
-import Lab9.homework.entities.Genres;
+import homework.entities.Genres;
 import org.springframework.stereotype.Repository;
 
 @Repository

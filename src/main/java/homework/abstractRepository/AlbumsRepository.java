@@ -1,4 +1,6 @@
-package Lab9.homework.abstractRepository;
+package homework.abstractRepository;
+
+import Lab9.homework.abstractRepository.AbstractRepository;
 import Lab9.homework.entities.Albums;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

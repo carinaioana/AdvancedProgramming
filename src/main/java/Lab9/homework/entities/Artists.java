@@ -1,10 +1,14 @@
 package Lab9.homework.entities;
 //one to many
 
+import Lab5.compulsory.com.classes.Catalog;
+
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 @Entity
+@Table(name = "artists")
 public class Artists {
     @Id
     private Integer id;
@@ -16,7 +20,13 @@ public class Artists {
         this.id = id;
         this.name = name;
     }
-    @OneToMany(targetEntity = Albums.class)
+
+    /**
+     * @OneToMany -a one-to-many relationship between entities.
+     *  there can be multiple Albums associated with the entity Artist
+     *
+     */
+    @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL)
     private Set<Albums> albums = new HashSet<>();
 
     public Artists() {
@@ -45,5 +55,9 @@ public class Artists {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public Set<Albums> getAlbums() {
+        return albums;
     }
 }

@@ -16,3 +16,11 @@ The main specifications of the application are:
 - [x] findById - returns an entity based on its primary key;
 - [x] findByName - returns a list of entities that match a given name pattern. Use a named query in order to implement this method.
 - [x] Test your application
+
+## Homework
+
+-----------
+
+- [x] Create all entity classes and repositories. Implement properly the one-to-many and many-to-many relationships.
+- [x] Create a generic AbstractRepository using generics in order to simplify the creation of the repository classes. You may take a look at the CrudRepository interface from Spring Framework.
+- [x] Insert, using JPA, a large number of fake artists and albums in the database and log the execution time of your JPQL statements.

@@ -1,4 +1,6 @@
-package Lab9.homework.entities;
+package homework.entities;
+
+import Lab9.homework.entities.Albums;
 
 import javax.persistence.*;
 import java.util.HashSet;

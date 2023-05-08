@@ -14,5 +14,4 @@ import java.util.function.Function;
 
 @NoRepositoryBean
 public interface AbstractRepository<T, ID> extends JpaRepository<T, ID> {
-    // Add any custom methods here
 }

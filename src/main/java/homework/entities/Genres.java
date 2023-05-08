@@ -1,23 +1,13 @@
-package Lab9.homework.entities;
+package homework.entities;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Id;
 
-@Entity
-@Table(name = "genres")
 public class Genres {
     @Id
     private Integer id;
     @Column(name = "name")
     private String name;
-
-    /**
-     * albums field is defined as a Set of Albums,
-     * representing the inverse side of the many-to-many relationship
-     */
-    @ManyToMany(mappedBy = "genres")
-    private Set<Albums> albums = new HashSet<>();
 
     public Genres(Integer id, String name) {
         this.id = id;

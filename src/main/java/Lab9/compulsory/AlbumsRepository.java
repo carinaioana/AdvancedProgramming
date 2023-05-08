@@ -1,7 +1,6 @@
 package Lab9.compulsory;
 
 import Lab9.compulsory.entity.AlbumsEntity;
-import Lab9.compulsory.model.Albums;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -26,7 +25,7 @@ public class AlbumsRepository {
         return entityManager.find(AlbumsEntity.class, id);
     }
     public AlbumsEntity findByTitle(String title){
-        Query query = entityManager.createNamedQuery("Albums.find_ByTitle");
+        Query query = entityManager.createNamedQuery("Albums_findByTitle");
         query.setParameter("title", title);
         return (AlbumsEntity) query.getSingleResult();
     }

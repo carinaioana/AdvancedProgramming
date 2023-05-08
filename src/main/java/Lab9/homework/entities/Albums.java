@@ -1,16 +1,11 @@
 package Lab9.homework.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Album.findAll",
-                query = "select e from Albums e order by e.title"),
-        @NamedQuery(name = "Album.findByArtist",
-                query = "select e from Albums e where e.artist = ?1"),
-        @NamedQuery(name = "Albums.findByTitle",
-                query = "select a from Albums a where a.title = :title")
-})
+@Table(name = "albums")
 public class Albums{
     @Id
     @Column(name = "id")
@@ -26,7 +21,34 @@ public class Albums{
     private String artist;
 
     @Column(name = "genres")
+
+    /**
+     * @ManyToOne -  owning side of the relationship.
+     * @JoinColumn - the foreign key column name.
+     */
+   /* @ManyToOne
+    @JoinColumn(name = "id")
+    private Artists artistObject;*/
+
     private String genre;
+    /**
+     *  @ManyToMany - many-to-many relationship between Albums and Genres entities.
+     */
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    /**
+     * @JoinTable - connects the Albums and Genres entities. It defines the joinColumns attribute to specify the foreign key column for the Albums entity and
+     * the inverseJoinColumns attribute to specify the foreign key column for the Genres entity.
+     */
+    @JoinTable(
+            name = "album_genre",
+            joinColumns = {@JoinColumn(name = "album_id")},
+            inverseJoinColumns = {@JoinColumn(name = "genre_id")}
+    )
+    private Set<Genres> genres = new HashSet<>();
+
 
     public Albums(Integer id, Integer release_year, String title, String artist, String genre) {
         this.id = id;
