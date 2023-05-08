@@ -1,4 +1,5 @@
-package Lab9.homework.abstractImpl;
+
+package Lab9.homework;
 
 import Lab8.compulsory.Albums;
 import Lab9.compulsory.entity.AlbumsEntity;
@@ -191,3 +192,4 @@ public class AlbumRepositoryImpl implements AlbumsRepository{
         return null;
     }
 }
+

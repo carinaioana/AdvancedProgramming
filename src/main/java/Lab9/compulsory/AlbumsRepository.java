@@ -26,7 +26,7 @@ public class AlbumsRepository {
         return entityManager.find(AlbumsEntity.class, id);
     }
     public AlbumsEntity findByTitle(String title){
-        Query query = entityManager.createNamedQuery("Albums.findByTitle");
+        Query query = entityManager.createNamedQuery("Albums.find_ByTitle");
         query.setParameter("title", title);
         return (AlbumsEntity) query.getSingleResult();
     }

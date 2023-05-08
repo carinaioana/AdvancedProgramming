@@ -8,6 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/persistence/jakarta.persistence/2.2.3/jakarta.persistence-2.2.3-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/jakarta.persistence-2.2.3-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

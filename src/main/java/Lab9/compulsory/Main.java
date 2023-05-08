@@ -1,6 +1,7 @@
 package Lab9.compulsory;
 
 import Lab9.compulsory.entity.AlbumsEntity;
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 
 import javax.persistence.*;
 import java.sql.SQLException;

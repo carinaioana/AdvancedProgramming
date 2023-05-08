@@ -5,11 +5,11 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Album.findAll",
+        @NamedQuery(name = "Album.find_All",
                 query = "select e from AlbumsEntity e order by e.title"),
-        @NamedQuery(name = "Album.findByArtist",
+        @NamedQuery(name = "Album.find_ByArtist",
                 query = "select e from AlbumsEntity e where e.artist = ?1"),
-        @NamedQuery(name = "Albums.findByTitle",
+        @NamedQuery(name = "Albums.find_ByTitle",
                 query = "select a from AlbumsEntity a where a.title = :title")
 })
 @Table(name = "albums", schema = "public", catalog = "postgres")

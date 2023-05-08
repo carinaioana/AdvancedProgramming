@@ -1,6 +1,5 @@
 package Lab9.homework.entities;
 
-import javax.lang.model.element.Name;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;

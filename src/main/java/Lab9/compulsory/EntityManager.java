@@ -3,18 +3,18 @@ package Lab9.compulsory;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class EntityManagerFactoryManager {
+public class EntityManager {
 
-    private static EntityManagerFactoryManager instance;
+    private static EntityManager instance;
     private EntityManagerFactory entityManagerFactory;
 
-    private EntityManagerFactoryManager() {
+    private EntityManager() {
         // Private constructor to prevent instantiation outside of this class
     }
 
-    public static synchronized EntityManagerFactoryManager getInstance() {
+    public static synchronized EntityManager getInstance() {
         if (instance == null) {
-            instance = new EntityManagerFactoryManager();
+            instance = new EntityManager();
         }
         return instance;
     }

@@ -7,7 +7,7 @@
         <setting name="provider-name" value="EclipseLink" />
         <datasource-mapping>
           <factory-entry name="Lab1" value="e40e64ae-dbdd-4731-a192-4cf0843f28db" />
-          <factory-entry name="default" value="85a84703-61dc-426d-92b5-00b8712bbab7" />
+          <factory-entry name="default" value="70469ef7-73a8-480e-82f2-9e0a2e60813d" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
