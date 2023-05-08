@@ -1,0 +1,41 @@
+//albums table script
+
+CREATE TABLE IF NOT EXISTS public.albums
+(
+    id integer,
+    release_year integer,
+    title character varying COLLATE pg_catalog."default",
+    artist character varying COLLATE pg_catalog."default",
+    genres character varying COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.albums
+    OWNER to postgres;
+
+//artists table script
+
+CREATE TABLE IF NOT EXISTS public.artists
+(
+    id integer,
+    name character varying COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.artists
+    OWNER to postgres;
+
+//genres table script
+
+CREATE TABLE IF NOT EXISTS public.genres
+(
+    id integer,
+    name character varying COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.genres
+    OWNER to postgres;
