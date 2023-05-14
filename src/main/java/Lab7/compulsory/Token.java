@@ -1,25 +1,16 @@
 package Lab7.compulsory;
 
+/**
+ * Token Class: represents a token which is an integer between 1 and n^3;
+ */
 public class Token {
-    private final int number;
-//constructor
+    private final int value;
 
-    public Token(int number) {
-        this.number = number;
+    public Token(int value) {
+        this.value = value;
     }
 
-//getters
-
-    public int getNumber() {
-        return number;
-    }
-
-//toString
-
-    @Override
-    public String toString() {
-        return "Token{" +
-                "number=" + number +
-                '}';
+    public int getValue() {
+        return value;
     }
 }

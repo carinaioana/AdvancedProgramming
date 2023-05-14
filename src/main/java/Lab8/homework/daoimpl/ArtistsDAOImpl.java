@@ -1,12 +1,11 @@
-package Lab8.homework.classes;
+package Lab8.homework.daoimpl;
 
-import Lab8.homework.interfaces.ArtistsDAO;
-import com.opencsv.CSVReader;
+import Lab8.homework.daointerfaces.ArtistsDAO;
+import Lab8.homework.models.Artists;
+import Lab8.homework.Database;
 import com.opencsv.exceptions.CsvValidationException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package Lab8.homework.classes;
+package Lab8.homework;
 
 import java.sql.*;
 import org.apache.commons.dbcp2.BasicDataSource;

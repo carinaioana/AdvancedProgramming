@@ -39,6 +39,9 @@ public class DrawingPanel extends JPanel {
             }
         });*/
     }
+    /**
+     * Creates the offscreen image and sets up the graphics object.
+     */
     private void createOffscreenImage() {
         image = new BufferedImage(W, H, BufferedImage.TYPE_INT_ARGB);
         graphics = image.createGraphics();
@@ -47,6 +50,9 @@ public class DrawingPanel extends JPanel {
         graphics.setColor(Color.WHITE);
         graphics.fillRect(0, 0, 800, 600);
     }
+    /**
+     * Creates the board with the specified number of vertices based on the user configuration.
+     */
     final void createBoard() {
         if (frame.configPanel == null) {
             System.out.println("Error: configPanel is null");
@@ -59,6 +65,11 @@ public class DrawingPanel extends JPanel {
         drawVertices(numVertices);
         drawLines(numVertices, edgeProbability);
     }
+    /**
+     * Creates the vertices positions based on the number of vertices and places them in a circle.
+     *
+     * @param numVertices The number of vertices to create.
+     */
     private void createVertices(int numVertices) {
         int x0 = W / 2; int y0 = H / 2; //middle of the board
         int radius = H / 2 - 10; //board radius
@@ -71,6 +82,11 @@ public class DrawingPanel extends JPanel {
         }
         drawVertices(numVertices);
     }
+    /**
+     * Draws the vertices on the offscreen image.
+     *
+     * @param numVertices The number of vertices to draw.
+     */
     private void drawVertices(int numVertices) {
         graphics.setColor(Color.BLACK);
         for (int i = 0; i < numVertices; i++) {

@@ -1,50 +1,51 @@
 package Lab7.compulsory;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ExplorationMap {
-    private final Cell[][] matrix;
-    //Cell should be a wrapper or alias for List<Token>
-    int n;
-    SharedMemory sharedMemory = new SharedMemory(n);
+    private final int[][] cells;
+    private final int n;
 
-    public ExplorationMap(Cell[][] matrix, int n) {
-        this.matrix = matrix;
+    public ExplorationMap(int n) {
         this.n = n;
+        cells = new int[n][n];
     }
 
-    //Cell should be a wrapper or alias for List<Token>
-    public boolean visit(int row, int col, Robot robot) {
-        synchronized (matrix[row][col]) {
-            {
-                Cell cell = matrix[row][col];
-                if (!cell.isVisited()) {
-                    List<Token> tokens = sharedMemory.extractTokens(n);
-                    //cell.addTokens(tokens);
-                    cell.setVisited(true);
-                    System.out.println(robot.getName() + " visited cell [" + row + "][" + col + "]");
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+    /**
+     *  method which checks if a given cell has already been visited and updates the cells array if the cell is available for visiting
+     * @param x
+     * @param y
+     * @return
+     */
+    public synchronized boolean visitCell(int x, int y) {
+        if (cells[x][y] != 0) {
+            return false;
         }
-// ...
+        cells[x][y] = 1;
+        return true;
     }
 
-    @Override
-    public String toString() {
-       /* display the matrix;*/
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                sb.append(matrix[i][j].isVisited() ? "1" : "0");
-                sb.append(" ");
-            }
-            sb.append("\n");
-        }
-        return sb.toString();
+    /**
+     * method which checks if a given position is valid within the map
+     * @param x
+     * @param y
+     * @return
+     */
+
+    public boolean isValidPosition(int x, int y) {
+        return x >= 0 && x < n && y >= 0 && y < n;
     }
 
+    /**
+     * method used to add a value to a specific cell
+     * @param x
+     * @param y
+     * @param value
+     */
+
+    public synchronized void addToken(int x, int y, int value) {
+        cells[x][y] = value;
+    }
+
+    public int getN() {
+        return n;
+    }
 }

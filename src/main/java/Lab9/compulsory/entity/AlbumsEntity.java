@@ -3,6 +3,9 @@ package Lab9.compulsory.entity;
 import javax.persistence.*;
 import java.util.Objects;
 
+/**
+ * An entity represents a table stored in a database
+ */
 @Entity
 @NamedQueries({
         @NamedQuery(name = "Album_findAll",

@@ -1,75 +1,87 @@
 package Lab7.compulsory;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Thread.sleep;
-
+/**
+ * class named Robot that implements the Runnable interface
+ */
 public class Robot implements Runnable {
-    private String name;
+    private final String name;
+
+    /**
+     * used to map the environment the robot is exploring
+     */
+    private final ExplorationMap map;
+
+    private final SharedMemory sharedMemory;
+    /**
+     * list of integers representing the tokens collected by the robot
+     */
+    private final List<Integer> tokens;
+
+    /**
+     *  the current position of the robot.
+     */
+    private int currentX;
+    private int currentY;
+    /**
+     * boolean variable that is used to indicate whether the robot is running or not.
+     */
     private boolean running;
-    Exploration explore;
-    int row;
-    int col;
-    public Robot(String name) {
+
+    public Robot(String name, ExplorationMap map, SharedMemory sharedMemory) {
         this.name = name;
-    }
-
-    //getters and setters
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean isRunning() {
-        return running;
+        this.map = map;
+        this.sharedMemory = sharedMemory;
+        this.tokens = new ArrayList<>();
+        this.running = true;
+        this.currentX = (int) (Math.random() * map.getN());
+        this.currentY = (int) (Math.random() * map.getN());
     }
 
     public void setRunning(boolean running) {
         this.running = running;
     }
 
-    public Exploration getExplore() {
-        return explore;
-    }
-
-    public void setExplore(Exploration explore) {
-        this.explore = explore;
-    }
-
-    public int getRow() {
-        return row;
-    }
-
-    public void setRow(int row) {
-        this.row = row;
-    }
-
-    public int getCol() {
-        return col;
-    }
-
-    public void setCol(int col) {
-        this.col = col;
-    }
-
-    //...
+    /**
+     * the robot randomly generates the next position to move to
+     * if the cell is visited, the robot adds a token to its collection
+     */
+    @Override
     public void run() {
         while (running) {
-           /* pick a new cell to explore*/
-            explore.getMap().visit(row, col, this);
-            System.out.println("Visited"+ row+"&"+ col);
-           /* make the robot sleep for some time*/
+            //random values for nextX and nextY within a range of -1, 0, or 1
+            int nextX = currentX + (int) (Math.random() * 3) - 1;
+            int nextY = currentY + (int) (Math.random() * 3) - 1;
 
-            try {
-                sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+
+            if (map.isValidPosition(nextX, nextY)) {
+                // Only one thread can execute this method at a time
+                synchronized (map) {
+                    if (map.visitCell(nextX, nextY)) {
+                        currentX = nextX;
+                        currentY = nextY;
+                        System.out.println(name + " visited cell (" + currentX + ", " + currentY + ")");
+                        addToken();
+                    }
+                }
             }
         }
     }
 
+    /**
+     * retrieves a token from the shared memory and adds it to the collection of tokens
+     * synchronized  is used to ensure that only one thread at a time can access the shared memory and map objects
+     */
+    private void addToken() {
+        synchronized (sharedMemory) {
+            Token token = sharedMemory.takeToken();
+            if (token != null && tokens.size() < map.getN()) {
+                tokens.add(token.getValue());
+                map.addToken(currentX, currentY, token.getValue());
+            }
+        }
+    }
 }
+

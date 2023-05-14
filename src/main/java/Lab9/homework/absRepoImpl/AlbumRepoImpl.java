@@ -30,13 +30,9 @@ public class AlbumRepoImpl implements AlbumsRepository{
         this.managerFactory = Persistence.createEntityManagerFactory("default");
         this.entityManager = managerFactory.createEntityManager();
     }
-
-
     @Override
     public void flush() {
-
     }
-
     @Override
     public <S extends Albums> S saveAndFlush(S entity) {
         return null;

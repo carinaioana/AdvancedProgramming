@@ -1,31 +1,39 @@
 package Lab7.compulsory;
 
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Collections;
+import java.util.List;
+
+/**
+ * SharedMemory Class: contains all available tokens;
+ */
 public class SharedMemory {
-    private final List<Token> tokens = new ArrayList<>();
-    /*declare a collection of tokens*/
-    public SharedMemory(int n) {
-        /*add all tokens to the collection and shuffle them;*/
-        for(int i = 0; i < n; i++){
-            Token token = new Token(i);
-            tokens.add(token);
+    private final List<Token> tokens;
+
+    /**
+     * Constructor
+     * receives the number of tokens;
+     * it will generate and initializes them with unique numbers, adding them to a list of Token objects.
+     * @param numTokens
+     */
+
+    public SharedMemory(int numTokens) {
+        tokens = new ArrayList<>();
+        for (int i = 1; i <= numTokens; i++) {
+            tokens.add(new Token(i));
         }
         Collections.shuffle(tokens);
     }
 
-    public synchronized List<Token> extractTokens(int howMany) {
-        List<Token> extracted = new ArrayList<>();
-        for (int i = 0; i < howMany; i++) {
-            if (tokens.isEmpty()) {
-                break;
-            }
-            /*poll one token from the collection*/
-            extracted.add(tokens.remove(0));
-        }
-        return extracted;
-    }
+    /**
+     * the takeToken method is synchronized and allows a thread to take the first available token from the token list and remove it from the list
+     * @return
+     */
 
+    public synchronized Token takeToken() {
+        if (tokens.isEmpty()) {
+            return null;
+        }
+        return tokens.remove(0);
+    }
 }

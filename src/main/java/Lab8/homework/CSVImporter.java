@@ -1,9 +1,9 @@
-package Lab8.homework.classes;
+package Lab8.homework;
 
+import Lab8.homework.Database;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;

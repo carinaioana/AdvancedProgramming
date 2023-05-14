@@ -1,6 +1,8 @@
-package Lab8.homework.classes;
+package Lab8.homework.daoimpl;
 
-import Lab8.homework.interfaces.GenresDAO;
+import Lab8.homework.daointerfaces.GenresDAO;
+import Lab8.homework.Database;
+import Lab8.homework.models.Genres;
 
 import java.sql.*;
 import java.util.ArrayList;

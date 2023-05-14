@@ -33,7 +33,7 @@ public class Main {
         System.out.println(newSortedList);
 
         /**
-         * transformed the array into a treeset
+         * transformed the array into a tree-set
          * the project names are already sorted
          */
         Set<Project> projectSet = Arrays.stream(projects).collect(Collectors.toCollection(TreeSet::new));

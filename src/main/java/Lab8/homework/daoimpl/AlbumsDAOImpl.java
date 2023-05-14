@@ -1,31 +1,41 @@
-package Lab8.homework.classes;
-
-import Lab8.homework.interfaces.AlbumsDAO;
+package Lab8.homework.daoimpl;
+import Lab8.homework.daointerfaces.AlbumsDAO;
+import Lab8.homework.models.Albums;
+import Lab8.homework.Database;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlbumsDAOImpl implements AlbumsDAO {
+public class AlbumsDAOImpl implements AlbumsDAO{
 
     //CRUD - Retrieve
     @Override
     public Albums get(int id) throws SQLException {
         Connection connection = Database.getConnection();
         Albums albums = null;
-        String sql = "SELECT id, release_year, title, artist, genre FROM albums WHERE id = ? ;";
+        String sql = "SELECT id, release_year, title, artist, genres FROM albums WHERE id = ? ;";
+
+        // Prepare the SQL statement with parameter
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1,id);
+
+        // Execute the query and obtain the result set
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()) {
+
+            // Extract the data from the result set
             Integer oid = resultSet.getInt("id");
             Integer ReleaseYear = resultSet.getInt("release_year");
             String Title = resultSet.getString("title");
             String Artist = resultSet.getString("artist");
-            String Genre = resultSet.getString("genre");
+            String Genre = resultSet.getString("genres");
 
+            // Create a new Albums object
             albums = new Albums(oid, ReleaseYear, Title, Artist, Genre);
         }
+
+        // Close resources
         Database.closeResultSet(resultSet);
         Database.closePreparedStatement(preparedStatement);
         Database.closeConnection(connection);
@@ -66,7 +76,7 @@ public class AlbumsDAOImpl implements AlbumsDAO {
     public int insert(Albums albums) throws SQLException {
         Connection con = Database.getConnection();
 
-        String sql = "INSERT INTO albums (id, release_year, title, artist, genre) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO albums (id, release_year, title, artist, genres) VALUES (?, ?, ?, ?, ?)";
 
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -88,7 +98,7 @@ public class AlbumsDAOImpl implements AlbumsDAO {
     public int update(Albums albums) throws SQLException {
         Connection connection = Database.getConnection();
 
-        String sql = "UPDATE albums set release_year = ?, title = ?, artist = ?, genre = ? where id = ?";
+        String sql = "UPDATE albums set release_year = ?, title = ?, artist = ?, genres = ? where id = ?";
 
         PreparedStatement ps = connection.prepareStatement(sql);
 

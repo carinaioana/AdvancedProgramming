@@ -1,20 +1,19 @@
 package Lab8.homework;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.sql.*;
 
-import com.opencsv.CSVReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import Lab8.homework.classes.*;
-import Lab8.homework.interfaces.AlbumsDAO;
-import Lab8.homework.interfaces.ArtistsDAO;
-import Lab8.homework.interfaces.GenresDAO;
+
+import Lab8.homework.daoimpl.AlbumsDAOImpl;
+import Lab8.homework.daoimpl.ArtistsDAOImpl;
+import Lab8.homework.daoimpl.GenresDAOImpl;
+import Lab8.homework.models.*;
+import Lab8.homework.daointerfaces.AlbumsDAO;
+import Lab8.homework.daointerfaces.ArtistsDAO;
+import Lab8.homework.daointerfaces.GenresDAO;
 import com.opencsv.exceptions.CsvValidationException;
-import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -26,9 +25,9 @@ public class Main {
             //import from the real data set albumlist.csv
 
             CSVImporter csvImporter = new CSVImporter();
-            csvImporter.ImportArtists("C:\\Users\\Carina\\Documents\\albumlist.csv");
-            csvImporter.ImportAlbums("C:\\Users\\Carina\\Documents\\albumlist.csv");
-            csvImporter.ImportGenres("C:\\Users\\Carina\\Documents\\albumlist.csv");
+            //csvImporter.ImportArtists("C:\\Users\\Carina\\Documents\\albumlist.csv");
+            //csvImporter.ImportAlbums("C:\\Users\\Carina\\Documents\\albumlist.csv");
+            //csvImporter.ImportGenres("C:\\Users\\Carina\\Documents\\albumlist.csv");
 
             List<Albums> albumsList;
             AlbumsDAO albumsDAO = new AlbumsDAOImpl();
@@ -58,10 +57,6 @@ public class Main {
             conn.close(); // return the connection to the pool
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (CsvValidationException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
 
         //CREATE

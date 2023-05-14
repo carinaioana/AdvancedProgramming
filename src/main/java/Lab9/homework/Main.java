@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         AlbumsRepository albumsRepository = new AlbumRepoImpl();
-   /*         Albums album = new Albums();
+   /*       Albums album = new Albums();
             album.setId(1);
             album.setTitle("Abbey Road");
             album.setArtist("The Beatles");

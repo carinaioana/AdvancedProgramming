@@ -1,10 +1,10 @@
-package Lab8.homework.classes;
+package Lab8.homework.models;
 
-public class Genres {
+public class Artists {
     private Integer id;
     private String name;
 
-    public Genres(Integer id, String name) {
+    public Artists(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -27,7 +27,7 @@ public class Genres {
 
     @Override
     public String toString() {
-        return "Genres{" +
+        return "Artists{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

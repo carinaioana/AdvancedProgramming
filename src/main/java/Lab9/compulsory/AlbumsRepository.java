@@ -21,6 +21,10 @@ public class AlbumsRepository {
         entityManager.getTransaction().commit();
         return album;
     }
+
+    /**
+     * Find by primary key. Search for an entity of the specified class and primary key.
+     */
     public AlbumsEntity findById(Integer id){
         return entityManager.find(AlbumsEntity.class, id);
     }

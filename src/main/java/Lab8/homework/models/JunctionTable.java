@@ -1,4 +1,4 @@
-package Lab8.homework.classes;
+package Lab8.homework.models;
 
 public class JunctionTable {
 }

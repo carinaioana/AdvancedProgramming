@@ -1,7 +1,5 @@
 package Lab8.compulsory;
 
-import javax.swing.plaf.nimbus.State;
-import java.rmi.server.RemoteRef;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,19 +11,28 @@ public class AlbumsDAOImpl implements AlbumsDAO{
     public Albums get(int id) throws SQLException {
         Connection connection = Database.getConnection();
         Albums albums = null;
-        String sql = "SELECT id, release_year, title, artist, genre FROM albums WHERE id = ? ;";
+        String sql = "SELECT id, release_year, title, artist, genres FROM albums WHERE id = ? ;";
+
+        // Prepare the SQL statement with parameter
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1,id);
+
+        // Execute the query and obtain the result set
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()) {
+
+            // Extract the data from the result set
             Integer oid = resultSet.getInt("id");
             Integer ReleaseYear = resultSet.getInt("release_year");
             String Title = resultSet.getString("title");
             String Artist = resultSet.getString("artist");
-            String Genre = resultSet.getString("genre");
+            String Genre = resultSet.getString("genres");
 
+            // Create a new Albums object
             albums = new Albums(oid, ReleaseYear, Title, Artist, Genre);
         }
+
+        // Close resources
         Database.closeResultSet(resultSet);
         Database.closePreparedStatement(preparedStatement);
         Database.closeConnection(connection);
@@ -37,7 +44,7 @@ public class AlbumsDAOImpl implements AlbumsDAO{
     public List<Albums> getAll() throws SQLException {
         Connection connection = Database.getConnection();
 
-        String sql = "SELECT id, release_year, title, artist, genre FROM albums;";
+        String sql = "SELECT id, release_year, title, artist, genres FROM albums;";
 
         List<Albums> albumList = new ArrayList<>();
         Statement statement = connection.createStatement();
@@ -49,7 +56,7 @@ public class AlbumsDAOImpl implements AlbumsDAO{
             Integer ReleaseYear = resultSet.getInt("release_year");
             String Title = resultSet.getString("title");
             String Artist = resultSet.getString("artist");
-            String Genre = resultSet.getString("genre");
+            String Genre = resultSet.getString("genres");
 
             Albums album = new Albums(oid, ReleaseYear, Title, Artist, Genre);
             albumList.add(album);
@@ -66,7 +73,7 @@ public class AlbumsDAOImpl implements AlbumsDAO{
     public int insert(Albums albums) throws SQLException {
         Connection con = Database.getConnection();
 
-        String sql = "INSERT INTO albums (id, release_year, title, artist, genre) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO albums (id, release_year, title, artist, genres) VALUES (?, ?, ?, ?, ?)";
 
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -88,7 +95,7 @@ public class AlbumsDAOImpl implements AlbumsDAO{
     public int update(Albums albums) throws SQLException {
         Connection connection = Database.getConnection();
 
-        String sql = "UPDATE albums set release_year = ?, title = ?, artist = ?, genre = ? where id = ?";
+        String sql = "UPDATE albums set release_year = ?, title = ?, artist = ?, genres = ? where id = ?";
 
         PreparedStatement ps = connection.prepareStatement(sql);
 

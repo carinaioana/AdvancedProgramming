@@ -1,8 +1,7 @@
-package Lab8.homework.interfaces;
+package Lab8.homework.daointerfaces;
 
 import com.opencsv.exceptions.CsvValidationException;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;

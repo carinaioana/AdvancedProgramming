@@ -3,6 +3,10 @@ package Lab8.compulsory;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * DAO (Data Access Object) - interface for performing CRUD (Create, Read, Update, Delete) operations
+ * @param <T>
+ */
 public interface DAO<T> {
     T get(int id) throws SQLException;
     List<T> getAll() throws SQLException;
